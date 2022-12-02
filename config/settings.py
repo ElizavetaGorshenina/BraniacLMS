@@ -118,11 +118,15 @@ MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
 
 AUTHENTICATION_BACKENDS = (
     "social_core.backends.github.GithubOAuth2",
+    "social_core.backends.google.GoogleOAuth2",
     "django.contrib.auth.backends.ModelBackend",
 )
 
 SOCIAL_AUTH_GITHUB_KEY = "d517e489aeb975894b72"
 SOCIAL_AUTH_GITHUB_SECRET = "f6e7599d815bcef27bcd56d099e34ae6d6ef2bbd"
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = "332944308888-3mu3j7jmj6iqu5a2tmmg9dqqnmo6otpl.apps.googleusercontent.com"
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = "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"
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
