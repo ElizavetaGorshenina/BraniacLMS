@@ -68,6 +68,8 @@ class Lesson(models.Model):
 
     class Meta:
         ordering = ("course", "num")
+        verbose_name = _("Lesson")
+        verbose_name_plural = _("Lessons")
 
 
 class CourseTeachers(models.Model):
