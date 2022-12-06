@@ -102,4 +102,3 @@ class ProfileEditView(LoginRequiredMixin, TemplateView):
                 mark_safe(f"Something goes worng:<br>{exp}"),
             )
         return HttpResponseRedirect(reverse_lazy("authapp:profile_edit"))
-        
