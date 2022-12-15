@@ -20,6 +20,7 @@ from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
+from mainapp import views as mainapp_views
 
 class TestNewsPage(TestCase):
     fixtures = (
@@ -196,3 +197,50 @@ class TestNewsSelenium(StaticLiveServerTestCase):
         # Close browser
         self.selenium.quit()
         super().tearDown()
+
+
+class TestAllPagesnNotLoggedIn(TestCase):
+    def test_main_page_open(self):
+        path = reverse("mainapp:main_page")
+        result = self.client.get(path)
+        self.assertEqual(result.status_code, HTTPStatus.OK)
+
+    def test_login_page_open(self):
+        path = reverse("authapp:login")
+        result = self.client.get(path)
+        self.assertEqual(result.status_code, HTTPStatus.OK)
+
+    def test_contacts_page_open(self):
+        path = reverse("mainapp:contacts")
+        result = self.client.get(path)
+        self.assertEqual(result.status_code, HTTPStatus.OK)
+
+    def test_news_page_open(self):
+        path = reverse("mainapp:news")
+        result = self.client.get(path)
+        self.assertEqual(result.status_code, HTTPStatus.OK)
+
+    def test_news_page_one_open(self):
+        path = reverse("mainapp:news") + f"?page=1"
+        result = self.client.get(path)
+        self.assertEqual(result.status_code, HTTPStatus.OK)
+    
+    def test_news_page_two_open(self):
+        path = reverse("mainapp:news") + f"?page=2"
+        result = self.client.get(path)
+        self.assertEqual(result.status_code, HTTPStatus.OK)
+
+    def test_courses_page_open(self):
+        path = reverse("mainapp:courses")
+        result = self.client.get(path)
+        self.assertEqual(result.status_code, HTTPStatus.OK)
+
+    def test_courses_page_one_open(self):
+        path = reverse("mainapp:courses") + f"?page=1"
+        result = self.client.get(path)
+        self.assertEqual(result.status_code, HTTPStatus.OK)
+    
+    def test_courses_page_two_open(self):
+        path = reverse("mainapp:courses") + f"?page=2"
+        result = self.client.get(path)
+        self.assertEqual(result.status_code, HTTPStatus.OK)
